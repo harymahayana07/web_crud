@@ -1,4 +1,10 @@
 <!-- web dasar Crud By Arikk -->
+<?php
+session_start();
+if(!isset($_SESSION['login'])){
+    header('location:login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,16 +16,16 @@
 </head>
 <body>
     <div class="container">
-    <h3 class="alert alert-info"> Data Artikel</h3>
+    <h3 class="alert alert-info"> TAMBAH DATA ARTIKEL</h3>
 
     <?php
-//kekurangan : tambahnya masih bisa menginputkan script/tag html.(belum menambahkan htmlspecialchars);
+//menambahkan htmlspecialchars
 require 'conn.php';
     if(isset($_POST['simpan'])){
-        $txtauthor = $_POST['txtauthor'];
-        $txttitle = $_POST['txttitle'];
-        $txtbody = $_POST['txtbody'];
-        $txtkeyword = $_POST['txtkeyword'];
+        $txtauthor = htmlspecialchars($_POST['txtauthor']);
+        $txttitle = htmlspecialchars($_POST['txttitle']);
+        $txtbody = htmlspecialchars($_POST['txtbody']);
+        $txtkeyword = htmlspecialchars($_POST['txtkeyword']);
 $sql = "INSERT INTO article VALUES (NULL,'$txtauthor','$txttitle','$txtbody','$txtkeyword')";
 $query = mysqli_query($koneksi,$sql);
 

@@ -1,4 +1,10 @@
 <!-- Web_dasar Crud by Arikk -->
+<?php
+session_start();
+if(!isset($_SESSION['login'])){
+    header('location:login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +16,7 @@
 </head>
 <body>
     <div class="container">
-    <h3 class="alert alert-info"> EDIT Data Artikel</h3>
+    <h3 class="alert alert-info"> EDIT DATA ARTIKEL</h3>
     <?php
     require 'conn.php';
         //menampilan data dalam table
